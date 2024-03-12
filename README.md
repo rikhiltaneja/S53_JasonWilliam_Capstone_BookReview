@@ -1,7 +1,7 @@
 
 # BookReview 📖
 
-## BookReview is a web application designed to simplify the reading of books and let the users enjoy reading . Instead of reading an entire book, the user can read for ten minutes and can grasp the idea of the whole book . This website is a user-friendly platform where the users can choose to read whatever books and let them input their details. This can allow users to post any book they find interesting . BookReview aims to empower users who are not fond of reading books and have less time to spend on reading books. Overall, BookReview aims to make reading more accessible and enjoyable for a wider audience, even those who might not consider themselves traditional bookworms.
+ BookReview is a web application designed to simplify the reading of books and let the users enjoy reading . Instead of reading an entire book, the user can read for ten minutes and can grasp the idea of the whole book . This website is a user-friendly platform where the users can choose to read whatever books and let them input their details. This can allow users to post any book they find interesting . BookReview aims to empower users who are not fond of reading books and have less time to spend on reading books. Overall, BookReview aims to make reading more accessible and enjoyable for a wider audience, even those who might not consider themselves traditional bookworms.
 
 
 ## Features
