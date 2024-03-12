@@ -42,7 +42,7 @@ Personalized Experience: Users can input their preferences and details, allowing
 BookReview aims to revolutionize the reading experience for users with its innovative approach to summarizing books in just ten minutes. The user-friendly interface and personalized recommendations make it a standout platform in the realm of reading applications.I welcome any feedback or suggestions for improvement.
 
 ## Contact
-For any inquiries or support, please contact us at jasonwilliam@kalvium.community
+For any inquiries or support, please contact us at jasonwilliam9894@gmail.com
 
 
 ## Plan:
