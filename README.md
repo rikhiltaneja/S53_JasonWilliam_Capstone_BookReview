@@ -32,7 +32,7 @@ Personalized Experience: Users can input their preferences and details, allowing
 
 
 ## Installation
-- Clone the repository: git clone https://github.com/your_username/BookReview.git
+- Clone the repository: git clone https://github.com/kalviumcommunity/S53_JasonWilliam_Capstone_BookReview.git
 - Navigate to the project directory: cd BookReview
 - Install dependencies: npm install
 - Start the server: npm run dev
