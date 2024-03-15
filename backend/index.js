@@ -8,7 +8,3 @@ app.listen(3000, () => {
 })
 
 
-
-// npm install -D nodemon
-// npm install -D typescript @types/express
-// npm install -D ts-node
