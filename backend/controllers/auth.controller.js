@@ -9,16 +9,17 @@ export const signup = async (req, res) =>{
     } 
 
     const hashPassword = bycrptjs.hashSync(password,10);
+    const existingUser = await User.findOne({ email }); if (existingUser) { return res.status(400).json({ message: "User already exists" }); }
 
     const newUser = new User({
         username,
-        email,
+        email:existingUser,
         password : hashPassword,
     })
 
     try {
         await newUser.save()
-        res.json("signup sucessful")
+        res.status(201).json("signup successful")
         
     } catch (error) {
         res.status(500).json({message:error.message});
