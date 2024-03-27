@@ -20,15 +20,15 @@ function SignUp() {
           <form>
             <div className="flex flex-col gap-4">
               <Label value='Your Username'/>
-              <TextInput id='username' type='text' placeholder='Username'  />
+              <TextInput id='username' type='text' placeholder='Username' aria-label='Username'  />
               </div>
               <div className="">
               <Label value='Your Email'/>
-              <TextInput id='email' type='email' placeholder='Email' />
+              <TextInput id='email' type='email' placeholder='Email' aria-label='Email'/>
             </div>
               <div className="">
               <Label value='Your Password'/>
-              <TextInput id='password' type='password' placeholder='Password' />
+              <TextInput id='password' type='password' placeholder='Password' aria-label='Password' />
             </div>
             <Button gradientDuoTone='purpleToPink' type='submit' className=' w-96 flex-col gap-4 mt-5'>Sign Up</Button>
           </form>
