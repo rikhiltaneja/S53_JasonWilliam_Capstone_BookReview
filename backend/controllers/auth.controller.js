@@ -39,13 +39,14 @@ export const signin = async(req, res,next) =>{
 
     try {
         const validator = await User.findOne({ email });
+        
         if (!validator){
-            return next(errorHandler(400,'user not found'))
+            return res.status(400).json({ message: 'User not found' });
         }
         
         const isPasswordValid = bycrptjs.compareSync(password,validator.password);
         if (!isPasswordValid) {
-            return next(errorHandler(400,'Invalid credentials'))
+            return res.status(400).json({ message: 'Invalid password' })
         }
 
         const token = jwt.sign(
