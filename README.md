@@ -44,6 +44,8 @@ BookReview aims to revolutionize the reading experience for users with its innov
 ## Contact
 For any inquiries or support, please contact us at jasonwilliam9894@gmail.com
 
+### Frontend Deployment Link - https://bookreview-zeta.vercel.app/
+
 
 ## Plan:
 
