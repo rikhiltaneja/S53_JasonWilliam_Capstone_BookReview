@@ -1,5 +1,5 @@
 import User from '../models/user.model.js'
-import bycrptjs from 'bcryptjs' 
+import bcrypt from 'bcryptjs' 
 import { errorHandler } from '../utils/error.js';
 import jwt from 'jsonwebtoken';
 
@@ -10,7 +10,7 @@ export const signup = async (req, res,next) =>{
         next(errorHandler(400,'All fields are required'))
     } 
 
-    const hashPassword = bycrptjs.hashSync(password,10);
+    const hashPassword = bcrypt.hashSync(password,10);
     const existingUser = await User.findOne({ email }); if (existingUser) { return res.status(400).json({ message: "User already exists" }); }
 
     const newUser = new User({
@@ -44,7 +44,7 @@ export const signin = async(req, res,next) =>{
             return res.status(400).json({ message: 'User not found' });
         }
         
-        const isPasswordValid = bycrptjs.compareSync(password,validator.password);
+        const isPasswordValid = bcrypt.compareSync(password,validator.password);
         if (!isPasswordValid) {
             return res.status(400).json({ message: 'Invalid password' })
         }
@@ -83,7 +83,7 @@ export const google = async (req, res, next) => {
         const generatedPassword =
           Math.random().toString(36).slice(-8) +
           Math.random().toString(36).slice(-8);
-        const hashedPassword = bycrptjs.hashSync(generatedPassword, 10);
+        const hashedPassword = bcrypt.hashSync(generatedPassword, 10);
         const newUser = new User({
           username:
             name.toLowerCase().split(' ').join('') +
