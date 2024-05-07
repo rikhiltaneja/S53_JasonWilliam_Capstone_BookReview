@@ -50,7 +50,7 @@ export const signin = async(req, res,next) =>{
         }
 
         const token = jwt.sign(
-            {id:validator._id},process.env.JWT_TOKEN)
+            {id:validator._id, isAdmin:validator.isAdmin},process.env.JWT_TOKEN)
 
         const{password:paswrd,...rest} = validator._doc  //to hide the password from the response
         res.status(200).cookie('access_token',token, {
