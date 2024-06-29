@@ -87,6 +87,7 @@ export default function DashSidebar() {
           className='cursor-pointer'>
             SignOut
           </Sidebar.Item>
+          
         </Sidebar.ItemGroup>
       </Sidebar.Items>
     </Sidebar>
