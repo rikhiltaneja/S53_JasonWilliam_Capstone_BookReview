@@ -1,4 +1,4 @@
-import { Modal, Table, Button } from 'flowbite-react';
+import { Modal, Table, Button, Spinner } from 'flowbite-react'; // added Spinner for loading state
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
@@ -10,8 +10,12 @@ export default function DashUsers() {
   const [showMore, setShowMore] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [userIdToDelete, setUserIdToDelete] = useState('');
+  const [loading, setLoading] = useState(false); // added loading state
+  const [sortOrder, setSortOrder] = useState('asc'); // added sort order state
+
   useEffect(() => {
     const fetchUsers = async () => {
+      setLoading(true); // start loading
       try {
         const res = await fetch(`/api/user/getusers`);
         const data = await res.json();
@@ -24,6 +28,7 @@ export default function DashUsers() {
       } catch (error) {
         console.log(error.message);
       }
+      setLoading(false); // end loading
     };
     if (currentUser.isAdmin) {
       fetchUsers();
@@ -48,25 +53,44 @@ export default function DashUsers() {
 
   const handleDeleteUser = async () => {
     try {
-        const res = await fetch(`/api/user/delete/${userIdToDelete}`, {
-            method: 'DELETE',
-        });
-        const data = await res.json();
-        if (res.ok) {
-            setUsers((prev) => prev.filter((user) => user._id !== userIdToDelete));
-            setShowModal(false);
-        } else {
-            console.log(data.message);
-        }
+      const res = await fetch(`/api/user/delete/${userIdToDelete}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setUsers((prev) => prev.filter((user) => user._id !== userIdToDelete));
+        setShowModal(false);
+      } else {
+        console.log(data.message);
+      }
     } catch (error) {
-        console.log(error.message);
+      console.log(error.message);
     }
+  };
+
+  const sortUsersByDate = () => { // added function to sort users
+    const sortedUsers = [...users].sort((a, b) => {
+      return sortOrder === 'asc'
+        ? new Date(a.createdAt) - new Date(b.createdAt)
+        : new Date(b.createdAt) - new Date(a.createdAt);
+    });
+    setUsers(sortedUsers);
+    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
   };
 
   return (
     <div className='table-auto overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500'>
-      {currentUser.isAdmin && users.length > 0 ? (
+      {loading ? ( // show spinner when loading
+        <div className="flex justify-center my-4">
+          <Spinner size="lg" />
+        </div>
+      ) : currentUser.isAdmin && users.length > 0 ? (
         <>
+          <div className="flex justify-end mb-4"> {/* added sorting button */}
+            <Button onClick={sortUsersByDate}>
+              Sort by Date {sortOrder === 'asc' ? '▲' : '▼'}
+            </Button>
+          </div>
           <Table hoverable className='shadow-md'>
             <Table.Head>
               <Table.HeadCell>Date created</Table.HeadCell>
