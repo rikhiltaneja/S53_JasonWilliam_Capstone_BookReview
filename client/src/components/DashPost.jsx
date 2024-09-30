@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { HiOutlineExclamationCircle } from "react-icons/hi";
-import axios from 'axios';
+
 
 export default function DashPost() {
   const { currentUser } = useSelector((state) => state.user);
